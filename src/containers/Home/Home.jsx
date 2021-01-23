@@ -15,12 +15,6 @@ const Home = () => {
 
   return (
     <>
-      <nav className="navbar">
-        <div className="container">
-          <span className="h1">Employee Directory</span>
-        </div>
-      </nav>
-
       <div className="container">
         {/* <div className="row"> */}
         <table class="table">
