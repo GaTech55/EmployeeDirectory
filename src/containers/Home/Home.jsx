@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
-import axios from "axios";
 import Employee from "../../components/Employee/Employee";
 
 const Home = () => {
@@ -13,6 +12,25 @@ const Home = () => {
     });
   }, []);
 
+  const handleSortName = (event) => {
+    const sortEmployee = [...employee];
+    const sortedEmployees = sortEmployee.sort((a, b) =>
+      a.name.first > b.name.first ? 1 : -1
+    );
+    setEmployee(sortedEmployees);
+  };
+
+  //   const handleFilterName = (event) => {
+  //       console.log(event.target.value);
+  //       const filterName = event.target.value;
+  //       const listOfItems = this.state.employees.filter((response) => {
+  //           let values = Object.values(response).join("").toLowerCase();
+  //           return values.indexOf(
+  //               filterName.toLowerCase())!== -1;
+  //           )
+  //       })
+  //   }
+
   return (
     <>
       <div className="container">
@@ -21,7 +39,9 @@ const Home = () => {
           <thead>
             <tr>
               <th scope="col">Image</th>
-              <th scope="col">First Name</th>
+              <th scope="col">
+                <button onClick={handleSortName}>First Name</button>
+              </th>
               <th scope="col">Last Name</th>
               <th scope="col">Email</th>
               <th scope="col">Cell</th>
