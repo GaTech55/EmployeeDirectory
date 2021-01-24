@@ -22,8 +22,10 @@ const Navbar = () => {
         >
           <h1>Employee Directory</h1>
           <h4>
-            Click on the column headers to filter by heading or use the search
-            box to narrow your results.
+            Click on the <span style={{ color: "red" }}>Last Name</span> column
+            header to filter by heading or use the search box to narrow your
+            results for the <span style={{ color: "red" }}>First Name</span>{" "}
+            column.
           </h4>
         </div>
       </div>

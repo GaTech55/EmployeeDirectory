@@ -16,7 +16,7 @@ const Home = () => {
   const handleSortName = (event) => {
     const sortEmployee = [...employee];
     const sortedEmployees = sortEmployee.sort((a, b) =>
-      a.name.first > b.name.first ? 1 : -1
+      a.name.last > b.name.last ? 1 : -1
     );
     setEmployee(sortedEmployees);
   };
@@ -43,7 +43,9 @@ const Home = () => {
           <thead>
             <tr>
               <th scope="col">Image</th>
+              <th scope="col">First Name</th>
               <th scope="col">
+                {" "}
                 <a
                   onClick={handleSortName}
                   style={{
@@ -51,10 +53,9 @@ const Home = () => {
                     textAlign: "center",
                   }}
                 >
-                  First Name
+                  Last Name{" "}
                 </a>
               </th>
-              <th scope="col">Last Name</th>
               <th scope="col">Cell</th>
               <th scope="col">Email</th>
               <th scope="col">Age</th>

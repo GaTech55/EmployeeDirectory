@@ -22,7 +22,7 @@ function Search(props) {
                 <input
                   className="form-control mr-sm-2"
                   type="Search"
-                  placeholder="Search"
+                  placeholder="Filter by First Name"
                   aria-label="Search"
                   onChange={props.onChange}
                   style={styles.form}
