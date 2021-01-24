@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
-import Employee from "../../components/Employee/Employee";
 import Search from "../../components/Search/Search";
 
 const Home = () => {
   const [employee, setEmployee] = useState([]);
-
+  const [filteredEmployee, setFilteredEmployee] = useState([]);
   useEffect(() => {
     API.getRandomEmployee().then((results) => {
       console.log("results.data:", results.data);
       setEmployee(results.data.results);
+      setFilteredEmployee(results.data.results);
     });
   }, []);
 
@@ -21,32 +21,43 @@ const Home = () => {
     setEmployee(sortedEmployees);
   };
 
-    const handleSearchName = (event) => {
-        console.log(event.target.value);
-        const filter = event.target.value;
-        const listOfItems = this.state.employees.filter((response) => {
-            let values = Object.values(response).join("").toLowerCase();
-            return values.indexOf(
-                filterName.toLowerCase())!== -1;
-            )
-        })
+  const handleFilterName = (event) => {
+    const value = event.target.value;
+    console.log(event.target.value);
+
+    if (value === "") {
+      setFilteredEmployee(employee);
+      return;
     }
+    const filterName = [...filteredEmployee].filter((employee) => {
+      return employee.name.first.toLowerCase().includes(value.toLowerCase());
+    });
+    setEmployee(filterName);
+  };
 
   return (
     <>
       <div className="container">
         <Search onChange={handleFilterName} />
-        {/* <div className="row"> */}
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Image</th>
               <th scope="col">
-                <button onClick={handleSortName}>First Name</button>
+                <a
+                  onClick={handleSortName}
+                  style={{
+                    color: "blue",
+                    textAlign: "center",
+                  }}
+                >
+                  First Name
+                </a>
               </th>
               <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
               <th scope="col">Cell</th>
+              <th scope="col">Email</th>
+              <th scope="col">Age</th>
             </tr>
           </thead>
           <tbody>
@@ -57,13 +68,13 @@ const Home = () => {
                 </td>
                 <td>{employee.name.first}</td>
                 <td>{employee.name.last}</td>
-                <td>{employee.email}</td>
                 <td>{employee.cell}</td>
+                <td>{employee.email}</td>
+                <td>{employee.dob.age}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        {/* </div> */}
       </div>
     </>
   );
