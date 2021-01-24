@@ -7,9 +7,10 @@ const styles = {
     position: "relative",
   },
 };
-function Search({ handleInputChange }) {
-  console.log(handleInputChange);
-  // const context = useContext(DataAreaContext)
+
+function Search(props) {
+  console.log(props);
+
   return (
     <>
       <div className="container">
@@ -23,7 +24,7 @@ function Search({ handleInputChange }) {
                   type="Search"
                   placeholder="Search"
                   aria-label="Search"
-                  // onChange={this.handleInputChange}
+                  onChange={props.onChange}
                   style={styles.form}
                 ></input>
               </form>

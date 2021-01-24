@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import Employee from "../../components/Employee/Employee";
+import Search from "../../components/Search/Search";
 
 const Home = () => {
   const [employee, setEmployee] = useState([]);
@@ -20,20 +21,21 @@ const Home = () => {
     setEmployee(sortedEmployees);
   };
 
-  //   const handleFilterName = (event) => {
-  //       console.log(event.target.value);
-  //       const filterName = event.target.value;
-  //       const listOfItems = this.state.employees.filter((response) => {
-  //           let values = Object.values(response).join("").toLowerCase();
-  //           return values.indexOf(
-  //               filterName.toLowerCase())!== -1;
-  //           )
-  //       })
-  //   }
+    const handleSearchName = (event) => {
+        console.log(event.target.value);
+        const filter = event.target.value;
+        const listOfItems = this.state.employees.filter((response) => {
+            let values = Object.values(response).join("").toLowerCase();
+            return values.indexOf(
+                filterName.toLowerCase())!== -1;
+            )
+        })
+    }
 
   return (
     <>
       <div className="container">
+        <Search onChange={handleFilterName} />
         {/* <div className="row"> */}
         <table class="table">
           <thead>
