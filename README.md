@@ -55,7 +55,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 | **Commits** | **Contributor** |
 
-| 13| [GaTech55](https://github.com/GaTech55)|
+| 14| [GaTech55](https://github.com/GaTech55)|
 
 ## Copyright
 
